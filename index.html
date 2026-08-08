@@ -188,7 +188,7 @@ h3{font-size:1.4rem;letter-spacing:-.025em;line-height:1.2}
 .hero-scrim{position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.25) 32%,rgba(0,0,0,.55) 66%,rgba(0,0,0,.92) 100%)}
 .hero-in{position:relative;z-index:2;width:100%;padding:2.5rem 0}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(22rem,26rem);gap:4rem;align-items:center}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(22rem,26rem);gap:4rem;align-items:end}
 .hero h1{margin:1.5rem 0 0;max-width:15ch}
 .hero-tags{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:2rem}
 .hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2.4rem}
@@ -773,6 +773,37 @@ h3{font-size:1.4rem;letter-spacing:-.025em;line-height:1.2}
 }
 
 </style>
+<style>
+/* --- sekcja kontaktu: formularz w siatce bloków, mapa pod spodem --- */
+.kont-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;align-items:stretch}
+.kont-grid .k-item{margin:0}
+.kont-form{grid-column:1 / -1;display:flex;gap:2.5rem;align-items:flex-start;padding:1.8rem}
+.kont-form .kf-head{flex:0 0 20rem}
+.kont-form .kf-head h2{font-size:1.5rem}
+.kont-form .kf-form{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-top:0}
+.kont-form .kf-wide{grid-column:1 / -1}
+.kont-form .kf-wide textarea{height:5rem}
+.kont-form .kf-foot{grid-column:1 / -1;display:flex;align-items:center;justify-content:space-between;
+  gap:1.5rem;flex-wrap:wrap;margin-top:.4rem}
+.kont-form .kf-foot .consent{margin-top:0;max-width:32rem}
+.kont-form .form-done{width:100%}
+.kont-map{margin-top:.75rem;aspect-ratio:24/7}
+@media (max-width:1024px){
+  .kont-grid{grid-template-columns:repeat(2,1fr)}
+  .kont-form{flex-direction:column;gap:1.4rem}
+  .kont-form .kf-head{flex:none}
+  .kont-form .kf-form{grid-template-columns:repeat(2,1fr);width:100%}
+  .kont-map{aspect-ratio:16/9}
+}
+@media (max-width:640px){
+  .kont-grid{grid-template-columns:1fr}
+  .kont-form{padding:1.2rem}
+  .kont-form .kf-form{grid-template-columns:1fr}
+  .kont-form .kf-foot{flex-direction:column-reverse;align-items:stretch}
+  .kont-form .kf-foot .btn{width:100%;justify-content:space-between}
+  .kont-map{aspect-ratio:4/3}
+}
+</style>
 </head>
 <body data-page="home">
 <main>
@@ -980,48 +1011,46 @@ h3{font-size:1.4rem;letter-spacing:-.025em;line-height:1.2}
       <div class="sec-head">
         <h2 class="fh">Napisz, zadzwoń albo po prostu przyjedź</h2>
       </div>
-      <div class="kont">
-        <div>
-          <div class="k-list">
-            <div class="k-item">
-              <span class="kl">Adres</span>
-              <p>ul. Brodzka 142<br />54-067 Wrocław</p>
-              <small>Parking przy warsztacie</small>
-            </div>
-            <div class="k-item">
-              <span class="kl">Telefon</span>
-              <a href="tel:+48730503290">+48 730 503 290</a>
-              <small>Rozmawiamy po polsku, ukraińsku i rosyjsku</small>
-            </div>
-            <div class="k-item">
-              <span class="kl">E-mail</span>
-              <a href="mailto:info@dieselprog.pl">info@dieselprog.pl</a>
-              <small>Odpowiadamy w ciągu jednego dnia roboczego</small>
-            </div>
-            <div class="k-item">
-              <span class="kl">Godziny</span>
-              <p>Pon.–Pt. 9:00–18:00</p>
-              <small>Sob. 9:00–14:00 · Niedziela nieczynne</small>
-              <div class="k-chan">
-                <a href="https://wa.me/48730503290" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
-                <a href="https://t.me/" aria-label="Telegram"><svg><use href="#i-tg"/></svg></a>
-              </div>
-            </div>
+      <div class="kont-grid">
+        <div class="k-item">
+          <span class="kl">Adres</span>
+          <p>ul. Brodzka 142<br />54-067 Wrocław</p>
+          <small>Parking przy warsztacie</small>
+        </div>
+        <div class="k-item">
+          <span class="kl">Telefon</span>
+          <a href="tel:+48730503290">+48 730 503 290</a>
+          <small>Rozmawiamy po polsku, ukraińsku i rosyjsku</small>
+        </div>
+        <div class="k-item">
+          <span class="kl">E-mail</span>
+          <a href="mailto:info@dieselprog.pl">info@dieselprog.pl</a>
+          <small>Odpowiadamy w ciągu jednego dnia roboczego</small>
+        </div>
+        <div class="k-item">
+          <span class="kl">Godziny</span>
+          <p>Pon.–Pt. 9:00–18:00</p>
+          <small>Sob. 9:00–14:00 · Niedziela nieczynne</small>
+          <div class="k-chan">
+            <a href="https://wa.me/48730503290" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
+            <a href="https://t.me/" aria-label="Telegram"><svg><use href="#i-tg"/></svg></a>
           </div>
-          <!-- ZAMIEŃ: iframe Google Maps (lazy) -->
-          <div class="map imgbox"><div class="ph"><b>mapa-google.iframe</b><span>21/9 · osadzenie Google Maps, pinezka ul. Brodzka 142</span></div></div>
         </div>
 
-        <div class="gcard gcard-static" id="kontakt-form">
-          <h2>Napisz do nas</h2>
-          <p class="fsub">Im więcej szczegółów o aucie, tym dokładniejsza wycena.</p>
-          <form class="form" data-stub>
+        <div class="gcard gcard-static kont-form" id="kontakt-form">
+          <div class="kf-head">
+            <h2>Napisz do nas</h2>
+            <p class="fsub">Im więcej szczegółów o aucie, tym dokładniejsza wycena.</p>
+          </div>
+          <form class="form kf-form" data-stub>
             <div class="field"><input name="name" type="text" placeholder="Imię" required /></div>
             <div class="field"><input name="phone" type="tel" placeholder="Telefon" required /></div>
             <div class="field"><input name="email" type="email" placeholder="E-mail" /></div>
-            <div class="field"><textarea name="msg" placeholder="Marka, model, rocznik, silnik, przebieg i czego oczekujesz" required></textarea></div>
-            <button type="submit" class="btn btn-red btn-full">Wyślij <span class="sq"><svg><use href="#i-arw"/></svg></span></button>
-            <p class="consent">Wysyłając formularz akceptujesz <a href="#">Politykę prywatności</a>.</p>
+            <div class="field kf-wide"><textarea name="msg" placeholder="Marka, model, rocznik, silnik, przebieg i czego oczekujesz" required></textarea></div>
+            <div class="kf-foot">
+              <p class="consent">Wysyłając formularz akceptujesz <a href="#">Politykę prywatności</a>.</p>
+              <button type="submit" class="btn btn-red">Wyślij <span class="sq"><svg><use href="#i-arw"/></svg></span></button>
+            </div>
           </form>
           <div class="form-done">
             <div class="ok"><svg><use href="#i-check"/></svg></div>
@@ -1029,6 +1058,10 @@ h3{font-size:1.4rem;letter-spacing:-.025em;line-height:1.2}
             <span>Odpowiemy najszybciej jak to możliwe.</span>
           </div>
         </div>
+      </div>
+
+      <!-- ZAMIEŃ: iframe Google Maps (lazy) -->
+      <div class="map kont-map imgbox"><div class="ph"><b>mapa-google.iframe</b><span>21/9 · osadzenie Google Maps, pinezka ul. Brodzka 142</span></div></div>
       </div>
     </div>
   </section>
